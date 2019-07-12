@@ -2,6 +2,6 @@
 # tasks file for base-config
 - name: Enable repos
   get_url:
-    src: "{{ internal_repo_url }}"
+    url: "{{ internal_repo_url }}"
     dest: /etc/yum.repos.d/internal.repo
     mode: 0644
