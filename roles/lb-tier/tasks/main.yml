@@ -15,3 +15,8 @@
   notify:
     - Restart HAProxy
     - Enable HAProxy
+
+- name: Start HAProxy
+  service:
+    name: haproxy
+    state: started
