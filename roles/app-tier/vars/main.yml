@@ -1,2 +1,9 @@
 ---
 # vars file for app-tier
+tomcat_packages:
+  - tomcat
+
+tomcat_services:
+  - tomcat
+
+tomcat_dir: /usr/share/tomcat/webapps/ROOT

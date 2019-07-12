@@ -1,2 +1,12 @@
 ---
 # handlers file for db-tier
+- name: Start postgres
+  service:
+    name: postgresql.service
+    state: started
+
+- name: Enable postgres
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  loop: "{{ postgres_services }}"
