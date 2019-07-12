@@ -17,4 +17,4 @@
     state: "{{ item.state }}"
     userdata: "{{ osp_userdata }}"
     wait: yes
-  loop: "{{ osp_servers }}"
+  with_dict: "{{ osp_servers }}"
