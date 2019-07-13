@@ -8,7 +8,7 @@
 
 - name: Delete instances
   os_server:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: absent
     wait: yes
   loop: "{{result.ansible_facts.openstack_servers}}"
