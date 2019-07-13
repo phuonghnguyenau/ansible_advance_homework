@@ -11,4 +11,4 @@
     name: "{{ item }}"
     state: absent
     wait: yes
-  with_items: "{{result.ansible_facts.openstack_servers}}"
+  loop: "{{result.ansible_facts.openstack_servers}}"

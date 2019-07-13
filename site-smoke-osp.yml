@@ -1,14 +1,26 @@
 - hosts: workstation
   gather_facts: false
+  
   tasks:
   - name: OpenStack servers
     os_server_facts:
-     cloud: ospcloud
-     server: 'frontend'
+      cloud: ospcloud
+      server: 'frontend'
     register: openstack_info
     tags:
       - osp.smoke
+
   - name: Curl website
+    uri:
+      url: "http://{{ ansible_facts.openstack_servers.ansible_ssh_host }}"
+      return_content: yes
+    register: webpage
+
+  - name: Succeed if Status Code is 200
+    fail:
+    when: item.status != 200
+    loop:
+      - "{{ webpage.results }}"
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
