@@ -10,7 +10,7 @@
   roles:
     - name: base-config
       tags: base-config
-      when: ansible_facts['deployment_name'] is defined oransible_facts['deployment_name'] == 'QA'
+      when: ansible_facts['deployment_name'] is defined or ansible_facts['deployment_name'] == 'QA'
     - name: lb-tier
       tags: [lbs, haproxy]
 
