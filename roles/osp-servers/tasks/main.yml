@@ -18,3 +18,19 @@
     userdata: "{{ osp_userdata }}"
     wait: yes
   loop: "{{ osp_servers }}"
+
+- name: Obtain current state of instances
+  os_server_facts:
+    server: "*"
+    cloud: ospcloud
+    filters:
+      vm_state: stopped
+  register: stopped_instances
+
+- name: Power on instances if required
+  os_server_action:
+    server: "{{ item.name }}"
+    action: start
+    cloud: ospcloud
+  loop: "{{ stopped_instances.ansible_facts.openstack_servers }}"
+  when: (stopped_instances | length) > 0
