@@ -10,7 +10,7 @@
   roles:
     - name: base-config
       tags: base-config
-      when: hostvars[inventory_hostname]['deployment_name'] is defined or hostvars[inventory_hostname]['deployment_name'] == 'QA'
+      when: ansible_facts['deployment_name'] is defined oransible_facts['deployment_name'] == 'QA'
     - name: lb-tier
       tags: [lbs, haproxy]
 
@@ -21,7 +21,7 @@
   roles:
     - name: base-config
       tags: base-config
-      when: hostvars[inventory_hostname]['deployment_name'] is defined or hostvars[inventory_hostname]['deployment_name'] == 'QA'
+      when: ansible_facts['deployment_name'] is defined or ansible_facts['deployment_name'] == 'QA'
     - name: app-tier
       tags: [apps, tomcat]
 
@@ -32,6 +32,6 @@
   roles:
     - name: base-config
       tags: base-config
-      when: hostvars[inventory_hostname]['deployment_name'] is defined or hostvars[inventory_hostname]['deployment_name'] == 'QA'
+      when: ansible_facts['deployment_name'] is defined or ansible_facts['deployment_name'] == 'QA'
     - name: db-tier
       tags: [dbs, postgres]
