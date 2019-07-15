@@ -3,7 +3,7 @@
   tasks:
     - name: Use Uri module for wrting smoke test.
       uri:
-        url: http://{{ ansible_ssh_host }}.example.opentlc.com"
+        url: http://{{ ansible_ssh_host }}"
         return_content: yes
       register: webpage
 
